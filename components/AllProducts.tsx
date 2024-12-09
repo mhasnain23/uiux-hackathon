@@ -1,6 +1,5 @@
 import React from "react";
 import { ProductCard } from "./ProductCard";
-import { products } from "@/lib/index";
 
 const AllProducts = () => {
   return (

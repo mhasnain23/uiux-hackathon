@@ -1,5 +1,4 @@
 import React from "react";
-import { Heart, Zap, Shield, Target } from "lucide-react";
 
 interface FeatureProps {
   icon: string;

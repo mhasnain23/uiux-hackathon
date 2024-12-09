@@ -1,8 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import ContactInfo from "@/components/ContactInfo";
 import { FeatureSection } from "@/components/FeatureSection";
-import { Input } from "@/components/ui/input";
-import Image from "next/image";
 import React from "react";
 
 const AboutPage = () => {

@@ -1,5 +1,4 @@
 import React from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
 import Image from "next/image";
 
 interface ContactDetailProps {

@@ -1,7 +1,7 @@
 import { AboutHero } from "@/components/AboutHero";
 import { BrandFeatures } from "@/components/BrandFeatures";
 import { PopularProducts } from "@/components/PopularProduct";
-import Image from "next/image";
+// import Image from "next/image";
 
 const AboutPage = () => {
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import { ShoppingCart } from "lucide-react";
 import { products } from "@/lib/index";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
 const ProductDetail = ({ params }: { params: any }) => {
   const { id } = params;

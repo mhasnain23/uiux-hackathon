@@ -3,9 +3,7 @@ import { Input } from "@/components/ui/input";
 import {
   Facebook,
   Twitter,
-  Instagram,
   YoutubeIcon,
-  PinIcon as Pinterest,
   InstagramIcon,
   // Youtube,
 } from "lucide-react";
