@@ -6,7 +6,7 @@ const FaqsPage = () => {
     <div className="max-w-7xl mx-auto">
       <div className="flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="font-bold md:text-[48px] text-4xl mb-2 md:px-0 px-5">
+          <h1 className="font-bold md:text-[48px] text-center text-4xl mb-4 md:px-0 px-5">
             Question Looks Here
           </h1>
           <p className="font-medium text-[16px] text-center text-[#4F4F4F] md:px-0 px-5">
