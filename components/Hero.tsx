@@ -6,7 +6,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <div className="w-full md:px-0 px-10">
-      <div className="max-w-7xl mx-auto bg-[#f0f2f3] h-auto flex md:flex-row flex-col items-center justify-between md:py-0 py-4 px-12">
+      <div className="max-w-7xl mx-auto bg-[#f0f2f3] min-h-screen flex md:flex-row flex-col items-center justify-between md:py-0 py-4 px-12">
         <div className="max-w-xl h-[450px] flex flex-col items-start gap-8 md:order-none order-2">
           <span className="font-medium text-[14px] text-[#272343]">
             Welcome to chairy
