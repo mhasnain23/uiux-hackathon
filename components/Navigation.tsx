@@ -42,9 +42,9 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto h-[74px] flex items-center justify-between">
         <div className="md:flex hidden md:px-0 px-5">
           <ul className="flex items-center justify-center gap-10">
-            {navMenu.map((item) => (
+            {navMenu.map((item, index) => (
               <Link
-                key={item.id}
+                key={index}
                 href={item.path}
                 className="font-medium text-[14px]"
               >
