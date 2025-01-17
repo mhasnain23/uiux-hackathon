@@ -108,12 +108,12 @@ Define the database schemas used in the Comforty marketplace. Below is an exampl
   "name": "string",
   "description": "string",
   "price": "number",
+  "priceWithoutDiscount": "number",
+  "badge": "string",
   "category": "string",
-  "isFeaturedProduct": "boolean",
-  "isBestSeller": "boolean",
-  "tags":"Array" | "Object",
   "image": "image",
-  "stock": "number",
+  "inventory": "number",
+  "tags": "Array",
   "createdAt": "datetime",
   "updatedAt": "datetime"
 }
