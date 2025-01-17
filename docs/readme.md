@@ -30,7 +30,7 @@ Provide a high-level overview of the system's architecture. Include a diagram to
 
 Define the database schemas used in the Comforty marketplace. Below is an example schema for the product model:
 
-### Product Schema
+<!-- ### Product Schema
 
 ```json
 {
@@ -44,7 +44,7 @@ Define the database schemas used in the Comforty marketplace. Below is an exampl
   "createdAt": "date",
   "updatedAt": "date"
 }
-```
+``` -->
 
 ### User Schema
 
@@ -54,8 +54,6 @@ Define the database schemas used in the Comforty marketplace. Below is an exampl
   "name": "string",
   "email": "string",
   "password": "string",
-  "address": "string",
-  "role": "string",
   "createdAt": "date",
   "updatedAt": "date"
 }
