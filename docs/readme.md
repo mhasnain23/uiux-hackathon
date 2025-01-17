@@ -77,9 +77,9 @@ Define the database schemas used in the Comforty marketplace. Below is an exampl
 
 ```json
 {
-  "slug": "string",
   "title": "string",
-  "description": "string",
+  "image": "image",
+  "products": "number",
   "createdAt": "date",
   "updatedAt": "date"
 }
