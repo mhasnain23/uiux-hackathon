@@ -1,20 +1,22 @@
 import React from "react";
 import { ProductCard } from "./ProductCard";
-import { products } from "../lib/index";
 import { ProductBadge } from "./ProductBage";
 import Image from "next/image";
 import Link from "next/link";
+import { Products } from "@/sanity.types";
+import { imageURL } from "@/sanity/lib/image";
+import { ShoppingBasket, ShoppingBasketIcon, ShoppingCart } from "lucide-react";
 
-const ProductsGrid = () => {
+const ProductsGrid = ({ products }: { products: any }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-      {products.map((product) => (
-        <div className="group relative" key={product.id}>
+      {products.map((product: any) => (
+        <div className="group relative" key={product._id}>
           <div className="aspect-square w-full relative overflow-hidden rounded-lg bg-gray-100 cursor-pointer">
-            <Link href={`/${product.id}`}>
+            <Link href={`/${product._id}`}>
               <Image
-                src={product.imageUrl}
-                alt={product.name}
+                src={imageURL(product.image).url()}
+                alt={product.title!}
                 width={675}
                 height={607}
                 priority
@@ -22,13 +24,13 @@ const ProductsGrid = () => {
                 className="object-cover absolute hover:scale-[1.1] object-center transition-all ease-in-out duration-[0.2s]"
               />
             </Link>
-            <ProductBadge isNew={product.isNew} isSale={product.isSale} />
+            <ProductBadge tags={product.tags} />
           </div>
           <div className="mt-4 flex justify-between">
             <div>
               <h3
                 className={`${
-                  product.titleStyle ? "text-[#4DBCC6]" : "text-black/90"
+                  product.title ? "text-content" : "text-black/90"
                 }`}
               >
                 {product.name}
@@ -45,13 +47,14 @@ const ProductsGrid = () => {
               </div>
             </div>
             <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
-              <Image
+              {/* <Image
                 src={product.cartIcon}
                 alt={product.alt}
                 width={44}
                 height={44}
                 className={`${product.cartStyle} rounded-xl p-3`}
-              />
+              /> */}
+              <ShoppingCart />
             </div>
           </div>
         </div>
