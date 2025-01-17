@@ -87,6 +87,21 @@ Define the database schemas used in the Comforty marketplace. Below is an exampl
 }
 ```
 
+### Coupon Schema
+
+```json
+{
+  "couponId": "string",
+  "code": "string",
+  "discount": "number",
+  "validFrom": "date",
+  "validUntil": "date",
+  "isActive": "boolean",
+  "createdAt": "date",
+  "updatedAt": "date"
+}
+```
+
 ### Chair Product Schema
 
 ```json
