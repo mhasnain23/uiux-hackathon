@@ -16,21 +16,21 @@ const Hero = () => {
             <br /> Collection for your
             <br /> interior.
           </h1>
-          <Button className="bg-[#029FAE] hover:bg-[#029FAE]" size={"lg"}>
-            <Link
-              href={"/products"}
-              className="flex items-center justify-center gap-3"
-            >
+          <Link
+            href={"/products"}
+            className="flex items-center justify-center gap-3"
+          >
+            <Button className="bg-[#029FAE] hover:bg-[#029FAE]" size={"lg"}>
               Shop Now{" "}
               <Image
                 src={"/arrowright.png"}
                 alt="arrow right"
-                className="hover:ml-[5px]"
+                className="transition-transform duration-200 hover:translate-x-2"
                 width={24}
                 height={24}
               />
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
         {/* for hero image product */}
         <div className="lg:w-[434px] lg:h-[584px] max-w-lg md:order-none order-1">

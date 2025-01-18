@@ -24,7 +24,7 @@ const ProductsGrid = ({ products }: { products: any }) => {
                 className="object-cover absolute hover:scale-[1.1] object-center transition-all ease-in-out duration-[0.2s]"
               />
             </Link>
-            <ProductBadge tags={product.tags} />
+            <ProductBadge badge={product.badge} />
           </div>
           <div className="mt-4 flex justify-between">
             <div>
