@@ -22,7 +22,8 @@ export function CartItem({
       <Image
         src={image}
         alt={title}
-        fill
+        width={100}
+        height={100}
         className="w-24 h-24 object-cover rounded-md"
       />
       <div className="flex-1">

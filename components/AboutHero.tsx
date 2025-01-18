@@ -20,7 +20,8 @@ export function AboutHero() {
         <Image
           src="/assets/img4.png"
           alt="Modern Chair"
-          fill
+          width={400}
+          height={400}
           className="w-full h-[400px] object-cover rounded-lg"
         />
       </div>
