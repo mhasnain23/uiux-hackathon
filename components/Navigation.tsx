@@ -71,8 +71,9 @@ const Navigation = () => {
                       href={item.path}
                       className="font-medium text-[14px]"
                       onClick={() => setIsOpen(false)}
+                      key={item.id}
                     >
-                      <li key={index}>{item.text}</li>
+                      <li>{item.text}</li>
                     </Link>
                   ))}
                 </ul>

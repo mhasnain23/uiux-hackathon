@@ -3,8 +3,12 @@ import Companies from "@/components/Companies";
 // import ExploreNewProduct from "@/components/ExploreNewProduct";
 import Hero from "@/components/Hero";
 import ProductsSection from "@/components/Products";
+import { Products } from "@/sanity.types";
+import { client } from "@/sanity/lib/client";
 
-export default function Home() {
+export default async function Home() {
+  const products: Products[] = await client.fetch(`*[_type == "products"]`);
+
   return (
     <>
       <Hero />
@@ -13,7 +17,7 @@ export default function Home() {
       {/* <main className="w-full min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
         <ExploreNewProduct />
       </main> */}
-      <AllProducts />
+      <AllProducts products={products} />
     </>
   );
 }

@@ -12,7 +12,16 @@ import { imageURL } from "@/sanity/lib/image";
 import { ShoppingCart } from "lucide-react";
 
 const ProductsSection = async () => {
-  const products: Products[] = await client.fetch(`*[_type == "products"]`);
+  const products: Products[] = await client.fetch(
+    `*[_type == "products" && tags match "featured"]`
+  );
+  if (products.length === 0) {
+    console.warn("No products with tag 'featured' found");
+  }
+
+  console.log(products);
+
+  const AllProducts: Products[] = await client.fetch(`*[_type == "products"]`);
 
   return (
     <div className="w-full h-auto md:mt-0 mt-32">
@@ -60,14 +69,14 @@ const ProductsSection = async () => {
         </div>
       </div>
       {/* Responsive Components */}
-      <TopCategories products={products} />
+      <TopCategories products={AllProducts} />
       <div className="mt-10">
         <div className="max-w-7xl mx-auto flex items-start py-10">
           <h4 className="text-3xl uppercase text-start font-semibold text-gray-700 md:px-0 px-5">
             Explore new and popular styles
           </h4>
         </div>
-        <ExploreNewProduct />
+        <ExploreNewProduct products={AllProducts} />
       </div>
     </div>
   );

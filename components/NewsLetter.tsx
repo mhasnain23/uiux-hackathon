@@ -1,7 +1,8 @@
 import React from "react";
 import { InstagramSection } from "./InstagramSection";
+import { Products } from "@/sanity.types";
 
-const Newsletter = () => {
+const Newsletter = ({ products }: { products: Products[] }) => {
   return (
     <div className="bg-gray-100 py-14 mt-20">
       <div className="max-w-7xl h-auto flex items-center justify-center mx-auto px-4">
@@ -29,7 +30,7 @@ const Newsletter = () => {
           </div>
         </div>
       </div>
-      <InstagramSection />
+      <InstagramSection products={products} />
     </div>
   );
 };
