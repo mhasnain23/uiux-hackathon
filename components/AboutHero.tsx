@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 export function AboutHero() {
@@ -16,9 +17,10 @@ export function AboutHero() {
         </button>
       </div>
       <div className="hidden md:block">
-        <img
+        <Image
           src="/assets/img4.png"
           alt="Modern Chair"
+          fill
           className="w-full h-[400px] object-cover rounded-lg"
         />
       </div>

@@ -22,7 +22,7 @@ export function ProductCard({ products }: { products: Products[] }) {
                 src={imageURL(product.image!).url()}
                 alt={product.title! || "sanity image"}
                 fill
-                className="h-full w-full object-cover absolute hover:scale-[1.1] object-center transition-all ease-in-out duration-[0.2s]"
+                className="h-full w-full object-cover absolute hover:scale-[1.1] object-center transition-all ease-in-out duration-200"
               />
               <ProductBadge badge={product.badge} />
             </Link>

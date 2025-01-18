@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface FeatureProps {
@@ -8,7 +9,13 @@ interface FeatureProps {
 
 const Feature = ({ icon, title, description }: FeatureProps) => (
   <div className="flex flex-col items-start p-6 bg-[#f9f9f9] rounded-lg shadow-sm">
-    <img src={icon} alt={title} className="mb-4 text-[#007580]" />
+    <Image
+      src={icon}
+      alt={title}
+      width={24}
+      height={24}
+      className="mb-4 text-[#007580]"
+    />
     <h3 className="text-lg font-medium text-[#007580] mb-2">{title}</h3>
     <p className="text-[#007580] text-sm">{description}</p>
   </div>

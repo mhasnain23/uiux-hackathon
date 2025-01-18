@@ -1,5 +1,6 @@
 import React from "react";
 import { Heart, Trash2 } from "lucide-react";
+import Image from "next/image";
 
 interface CartItemProps {
   image: string;
@@ -18,9 +19,10 @@ export function CartItem({
 }: CartItemProps) {
   return (
     <div className="flex items-center gap-4 py-4 border-b border-gray-200 md:px-0 px-5">
-      <img
+      <Image
         src={image}
         alt={title}
+        fill
         className="w-24 h-24 object-cover rounded-md"
       />
       <div className="flex-1">

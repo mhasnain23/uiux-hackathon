@@ -21,7 +21,7 @@ const ProductsGrid = ({ products }: { products: any }) => {
                 height={607}
                 priority
                 quality={100}
-                className="object-cover absolute hover:scale-[1.1] object-center transition-all ease-in-out duration-[0.2s]"
+                className="object-cover absolute hover:scale-[1.1] object-center transition-all ease-in-out duration-200"
               />
             </Link>
             <ProductBadge badge={product.badge} />
