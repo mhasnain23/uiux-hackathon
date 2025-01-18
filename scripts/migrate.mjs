@@ -3,15 +3,6 @@ import "dotenv/config";
 
 // Import the Sanity client to interact with the Sanity backend
 import { createClient } from "@sanity/client";
-
-// Load required environment variables
-// const {
-//   NEXT_PUBLIC_SANITY_PROJECT_ID, // Sanity project ID
-//   NEXT_PUBLIC_SANITY_DATASET, // Sanity dataset (e.g., "production")
-//   NEXT_PUBLIC_SANITY_AUTH_TOKEN, // Sanity API token
-//   BASE_URL = "https://giaic-hackathon-template-08.vercel.app", // API base URL for products and categories
-// } = process.env;
-
 const NEXT_PUBLIC_SANITY_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const NEXT_PUBLIC_SANITY_DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET;
 const NEXT_PUBLIC_SANITY_AUTH_TOKEN = process.env.NEXT_PUBLIC_SANITY_AUTH_TOKEN;
