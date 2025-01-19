@@ -6,8 +6,8 @@ import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { Products } from "@/sanity.types";
 import { imageURL } from "@/sanity/lib/image";
-import { ShoppingCart } from "lucide-react";
 import TopCategories from "./TopCategories";
+import AddToCartButton from "./AddToCartButton";
 
 const ProductsSection = async () => {
   const products: Products[] = await client.fetch(
@@ -21,7 +21,7 @@ const ProductsSection = async () => {
 
   const topCategories = await client.fetch(`*[_type == "categories"]`);
 
-  console.log(topCategories);
+  // console.log(topCategories);
 
   return (
     <div className="w-full h-auto md:mt-0 mt-32">
@@ -69,8 +69,8 @@ const ProductsSection = async () => {
                 </CardFooter>
                 <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
                   {item.inventory! > 0 && (
-                    <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
-                      <ShoppingCart />
+                    <div className="hover:opacity-70 flex transition-opacity duration-300 cursor-pointer">
+                      <AddToCartButton product={item} className="mt-auto" />
                     </div>
                   )}
                 </div>

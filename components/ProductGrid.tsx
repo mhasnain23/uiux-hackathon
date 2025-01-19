@@ -1,11 +1,9 @@
 import React from "react";
-import { ProductCard } from "./ProductCard";
 import { ProductBadge } from "./ProductBage";
 import Image from "next/image";
 import Link from "next/link";
-import { Products } from "@/sanity.types";
 import { imageURL } from "@/sanity/lib/image";
-import { ShoppingBasket, ShoppingBasketIcon, ShoppingCart } from "lucide-react";
+import AddToCartButton from "./AddToCartButton";
 
 const ProductsGrid = ({ products }: { products: any }) => {
   return (
@@ -52,19 +50,11 @@ const ProductsGrid = ({ products }: { products: any }) => {
               </div>
             </div>
             <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
-              {/* <Image
-                src={product.cartIcon}
-                alt={product.alt}
-                width={44}
-                height={44}
-                className={`${product.cartStyle} rounded-xl p-3`}
-              /> */}
               {product.inventory > 0 && (
-                <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
-                  <ShoppingCart />
+                <div className="hover:opacity-70 flex transition-opacity duration-300 cursor-pointer">
+                  <AddToCartButton product={product} className="mt-auto" />
                 </div>
               )}
-              {/* <ShoppingCart /> */}
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Products } from "@/sanity.types";
 import { imageURL } from "@/sanity/lib/image";
 import { ShoppingCart } from "lucide-react";
+import AddToCartButton from "./AddToCartButton";
 
 export function ProductCard({ products }: { products: Products[] }) {
   return (
@@ -46,9 +47,9 @@ export function ProductCard({ products }: { products: Products[] }) {
                 )}
               </div>
             </div>
-            {product.inventory! <= 0 && (
-              <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
-                <ShoppingCart />
+            {product.inventory! > 0 && (
+              <div className="hover:opacity-70 flex transition-opacity duration-300 cursor-pointer">
+                <AddToCartButton product={product} className="mt-auto" />
               </div>
             )}
           </div>

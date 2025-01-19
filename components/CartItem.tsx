@@ -1,22 +1,27 @@
 import React from "react";
 import { Heart, Trash2 } from "lucide-react";
 import Image from "next/image";
+import { useCartStore } from "@/store/cartStore";
 
 interface CartItemProps {
+  id: string;
   image: string;
   title: string;
   price: number;
-  subtitle: string;
+  description: string;
   quantity: number;
 }
 
 export function CartItem({
+  id,
   image,
   title,
   price,
-  subtitle,
+  description,
   quantity,
 }: CartItemProps) {
+  const { clearCart } = useCartStore();
+
   return (
     <div className="flex items-center gap-4 py-4 border-b border-gray-200 md:px-0 px-5">
       <Image
@@ -28,13 +33,18 @@ export function CartItem({
       />
       <div className="flex-1">
         <h3 className="text-lg font-medium text-gray-900">{title}</h3>
-        {subtitle && <p className="text-sm text-gray-500">Size: {subtitle}</p>}
+        {description && (
+          <p className="text-sm text-gray-500">{description.split(",")[0]}</p>
+        )}
         <p className="text-sm text-gray-500">Size L - Quantity: {quantity}</p>
         <div className="flex items-center gap-4 mt-2">
           <button className="text-gray-400 hover:text-gray-600">
             <Heart size={20} />
           </button>
-          <button className="text-gray-400 hover:text-gray-600">
+          <button
+            className="text-gray-400 hover:text-gray-600"
+            onClick={() => clearCart(id)}
+          >
             <Trash2 size={20} />
           </button>
         </div>

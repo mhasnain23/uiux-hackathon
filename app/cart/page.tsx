@@ -1,35 +1,24 @@
+"use client";
+
 import { CartItem } from "@/components/CartItem";
 import { OrderSummary } from "@/components/OrderSummary";
 import React from "react";
+import { useCartStore } from "@/store/cartStore";
+import { imageURL } from "@/sanity/lib/image";
 
 const CartPage = () => {
-  const cartItems = [
-    {
-      image:
-        "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=300",
-      title: "Library Stool Chair",
-      price: 99,
-      subtitle: "Ashen Slate/Cobalt Bliss",
-      quantity: 1,
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?auto=format&fit=crop&q=80&w=300",
-      title: "Library Stool Chair",
-      price: 99,
-      subtitle: "Ashen Slate/Cobalt Bliss",
-      quantity: 1,
-    },
-  ];
+  const cartItems = useCartStore((state) => state.cart);
 
-  const orderSummaryData = {
-    subtotal: 198,
-    shipping: "Free",
-    total: 198,
-  };
+  // Calculate order summary dynamically based on cart items
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + item.price! * item.quantity,
+    0
+  );
+  const shipping = subtotal > 0 ? "Free" : "$0"; // Free shipping for any order with items
+  const total = subtotal; // Assuming no taxes or additional fees for now
 
   return (
-    <div className=" bg-white">
+    <div className="bg-white">
       <div className="max-w-7xl mx-auto py-8 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
@@ -37,16 +26,30 @@ const CartPage = () => {
               Bag
             </h1>
             <div className="space-y-4">
-              {cartItems.map((item, index) => (
-                <CartItem key={index} {...item} />
-              ))}
+              {cartItems.length > 0 ? (
+                cartItems.map((item, index) => (
+                  <CartItem
+                    key={index}
+                    id={item._id}
+                    image={imageURL(item.image!).url()}
+                    title={item.title || "sanity image"}
+                    price={item.price!}
+                    description={item.description!}
+                    quantity={item.quantity}
+                  />
+                ))
+              ) : (
+                <p className="text-gray-500 px-5">
+                  Your cart is empty. Add some items to your bag!
+                </p>
+              )}
             </div>
           </div>
           <div>
             <OrderSummary
-              subtotal={orderSummaryData.subtotal}
-              shipping={orderSummaryData.shipping}
-              total={orderSummaryData.total}
+              subtotal={subtotal}
+              shipping={shipping}
+              total={total}
             />
           </div>
         </div>
@@ -54,4 +57,5 @@ const CartPage = () => {
     </div>
   );
 };
+
 export default CartPage;

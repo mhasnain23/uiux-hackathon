@@ -1,11 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import Language from "../Languages";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import Navigation from "../Navigation";
+import { useCartStore } from "@/store/cartStore";
 
 const Header = () => {
+  const { cart } = useCartStore();
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <div className="w-full h-auto flex flex-col items-center">
       {/* A Wrapper DIV for bg color and full width */}
@@ -66,7 +73,7 @@ const Header = () => {
                 />
                 <p className="font-medium text-[12px]">Cart</p>
                 <span className="w-[20px] h-[20px] bg-[#007580] rounded-full text-white flex items-center justify-center">
-                  {2}
+                  {totalItems}
                 </span>
               </Link>
             </Button>

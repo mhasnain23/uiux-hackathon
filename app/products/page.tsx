@@ -1,6 +1,5 @@
 import Newsletter from "@/components/NewsLetter";
 import ProductsGrid from "@/components/ProductGrid";
-import { Products } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
 import React from "react";
 const ProductPage = async () => {
@@ -14,7 +13,6 @@ const ProductPage = async () => {
       <h1 className="text-center font-semibold text-3xl mb-8">All Products</h1>
       <ProductsGrid products={products} />
       <Newsletter products={productsByTag} />
-      {/* <ProductDetail /> */}
     </div>
   );
 };

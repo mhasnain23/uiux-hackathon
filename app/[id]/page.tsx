@@ -4,6 +4,7 @@ import { client } from "@/sanity/lib/client";
 import { Products } from "@/sanity.types";
 import { imageURL } from "@/sanity/lib/image";
 import Image from "next/image";
+import AddToCartButton from "@/components/AddToCartButton";
 
 const ProductDetail = async ({
   params,
@@ -62,10 +63,9 @@ const ProductDetail = async ({
               Out of Stock
             </div>
           ) : (
-            <button className="bg-[#029FAE] text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#028a97] transition-colors duration-300 w-fit">
-              <ShoppingCart className="w-5 h-5" />
-              Add to Cart
-            </button>
+            <div className="hover:opacity-70 flex transition-opacity duration-300 cursor-pointer">
+              <AddToCartButton product={featuredProduct} className="mt-auto" />
+            </div>
           )}
         </div>
       </div>
