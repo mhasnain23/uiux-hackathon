@@ -1,8 +1,5 @@
-import { productsData } from "@/lib";
-import React from "react";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import Image from "next/image";
-import TopCategories from "./TopCategories";
 import ExploreNewProduct from "./ExploreNewProduct";
 import { ProductBadge } from "./ProductBage";
 import Link from "next/link";
@@ -10,6 +7,7 @@ import { client } from "@/sanity/lib/client";
 import { Products } from "@/sanity.types";
 import { imageURL } from "@/sanity/lib/image";
 import { ShoppingCart } from "lucide-react";
+import TopCategories from "./TopCategories";
 
 const ProductsSection = async () => {
   const products: Products[] = await client.fetch(
@@ -19,9 +17,11 @@ const ProductsSection = async () => {
     console.warn("No products with tag 'featured' found");
   }
 
-  console.log(products);
-
   const AllProducts: Products[] = await client.fetch(`*[_type == "products"]`);
+
+  const topCategories = await client.fetch(`*[_type == "categories"]`);
+
+  console.log(topCategories);
 
   return (
     <div className="w-full h-auto md:mt-0 mt-32">
@@ -45,6 +45,13 @@ const ProductsSection = async () => {
                     className="hover:scale-[1.1] transition-transform duration-300 ease-in-out cursor-pointer"
                   />
                   <ProductBadge badge={item.badge} />
+                  {item.inventory === 0 && (
+                    <div className="absolute inset-0 bg-gray-900/40 flex items-center justify-center">
+                      <p className="text-white font-semibold text-lg">
+                        Out of Stock
+                      </p>
+                    </div>
+                  )}
                 </Link>
               </div>
               {/* Product Content */}
@@ -61,7 +68,11 @@ const ProductsSection = async () => {
                   </p>
                 </CardFooter>
                 <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
-                  <ShoppingCart />
+                  {item.inventory! > 0 && (
+                    <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
+                      <ShoppingCart />
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -69,7 +80,7 @@ const ProductsSection = async () => {
         </div>
       </div>
       {/* Responsive Components */}
-      <TopCategories products={AllProducts} />
+      <TopCategories topCategories={topCategories} />
       <div className="mt-10">
         <div className="max-w-7xl mx-auto flex items-start py-10">
           <h4 className="text-3xl uppercase text-start font-semibold text-gray-700 md:px-0 px-5">

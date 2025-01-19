@@ -1,21 +1,21 @@
 import React from "react";
 import { ProductBadge } from "./ProductBage";
 import Image from "next/image";
-import { products } from "@/lib";
 import Link from "next/link";
 import { Products } from "@/sanity.types";
 import { imageURL } from "@/sanity/lib/image";
 import { ShoppingCart } from "lucide-react";
 
-// interface ProductCardProps {
-//   product: Product;
-// }
-
 export function ProductCard({ products }: { products: Products[] }) {
   return (
     <>
       {products.map((product: Products) => (
-        <div className="group relative" key={product._id}>
+        <div
+          className={`group relative ${
+            product.inventory === 0 ? "opacity-50 pointer-events-none" : ""
+          }`}
+          key={product._id}
+        >
           <div className="aspect-square w-full relative overflow-hidden rounded-lg bg-gray-100 cursor-pointer">
             <Link href={`/${product._id}`}>
               <Image
@@ -26,6 +26,11 @@ export function ProductCard({ products }: { products: Products[] }) {
               />
               <ProductBadge badge={product.badge} />
             </Link>
+            {product.inventory === 0 && (
+              <div className="absolute inset-0 bg-gray-900/50 flex items-center justify-center">
+                <p className="text-white font-semibold text-lg">Out of Stock</p>
+              </div>
+            )}
           </div>
           <div className="mt-4 flex justify-between">
             <div>
@@ -41,9 +46,11 @@ export function ProductCard({ products }: { products: Products[] }) {
                 )}
               </div>
             </div>
-            <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
-              <ShoppingCart />
-            </div>
+            {product.inventory! <= 0 && (
+              <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
+                <ShoppingCart />
+              </div>
+            )}
           </div>
         </div>
       ))}

@@ -57,10 +57,16 @@ const ProductDetail = async ({
           <p className="text-gray-600 mb-6 max-w-xs">
             {featuredProduct.description}
           </p>
-          <button className="bg-[#029FAE] text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#028a97] transition-colors duration-300 w-fit">
-            <ShoppingCart className="w-5 h-5" />
-            Add to Cart
-          </button>
+          {featuredProduct.inventory === 0 ? (
+            <div className="text-gray-200 bg-gray-700 text-center px-4 py-2 rounded-lg">
+              Out of Stock
+            </div>
+          ) : (
+            <button className="bg-[#029FAE] text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#028a97] transition-colors duration-300 w-fit">
+              <ShoppingCart className="w-5 h-5" />
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
 
@@ -93,7 +99,7 @@ const ProductDetail = async ({
                 <h3 className="text-sm font-medium text-gray-900">
                   {product.title}
                 </h3>
-                <p className="text-lg font-bold text-gray-600">
+                <p className="md:text-base text-md font-bold text-gray-600">
                   ${product?.price?.toFixed(2)}
                 </p>
               </div>

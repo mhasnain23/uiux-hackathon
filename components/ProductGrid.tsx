@@ -25,6 +25,11 @@ const ProductsGrid = ({ products }: { products: any }) => {
               />
             </Link>
             <ProductBadge badge={product.badge} />
+            {product.inventory === 0 && (
+              <div className="absolute inset-0 bg-gray-900/60 flex items-center justify-center">
+                <p className="text-white font-semibold text-lg">Out of Stock</p>
+              </div>
+            )}
           </div>
           <div className="mt-4 flex justify-between">
             <div>
@@ -54,7 +59,12 @@ const ProductsGrid = ({ products }: { products: any }) => {
                 height={44}
                 className={`${product.cartStyle} rounded-xl p-3`}
               /> */}
-              <ShoppingCart />
+              {product.inventory > 0 && (
+                <div className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
+                  <ShoppingCart />
+                </div>
+              )}
+              {/* <ShoppingCart /> */}
             </div>
           </div>
         </div>

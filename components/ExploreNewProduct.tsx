@@ -1,9 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import { Products } from "@/sanity.types";
 import { imageURL } from "@/sanity/lib/image";
 import Image from "next/image";
 
 const ExploreNewProduct = ({ products }: { products: Products[] }) => {
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    undefined
+  );
+
+  //for singal product
   const newBadgeProduct = products.find((item) => item.badge === "New");
+  //for multiple products
   const newBadgeProducts = products.filter((item) => item.badge === "New");
 
   return (
@@ -11,7 +20,17 @@ const ExploreNewProduct = ({ products }: { products: Products[] }) => {
       {/* Main Image Section */}
       <div className="w-full">
         {/* Main Image */}
-        {newBadgeProduct?.image ? (
+        {selectedImage ? (
+          <Image
+            src={selectedImage}
+            alt={newBadgeProduct?.title || ""}
+            width={500}
+            height={500}
+            priority
+            quality={100}
+            className="object-cover rounded-3xl"
+          />
+        ) : newBadgeProduct?.image ? (
           <Image
             src={imageURL(newBadgeProduct.image).url()}
             alt={newBadgeProduct.title || ""}
@@ -30,14 +49,19 @@ const ExploreNewProduct = ({ products }: { products: Products[] }) => {
       <div className="w-full md:w-1/2 grid grid-cols-2 sm:grid-cols-2 gap-4">
         {newBadgeProducts.length > 0 ? (
           newBadgeProducts.map((item) => (
-            <Image
+            <div
               key={item._id}
-              src={imageURL(item.image!).url()}
-              alt={item.title || "sanity image"}
-              width={312}
-              height={312}
-              className="object-cover rounded-lg"
-            />
+              className="cursor-pointer"
+              onClick={() => setSelectedImage(imageURL(item.image!).url())}
+            >
+              <Image
+                src={imageURL(item.image!).url()}
+                alt={item.title || "sanity image"}
+                width={312}
+                height={312}
+                className="object-cover rounded-lg"
+              />
+            </div>
           ))
         ) : (
           <p className="col-span-2 text-gray-500 text-center">

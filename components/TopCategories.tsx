@@ -1,34 +1,46 @@
-import { productsData, topCategoriesData } from "@/lib";
 import React from "react";
 import { Card } from "./ui/card";
 import Image from "next/image";
-import { Products } from "@/sanity.types";
+import { Categories } from "@/sanity.types";
 import { imageURL } from "@/sanity/lib/image";
 import Link from "next/link";
 
-const TopCategories = ({ products }: { products: Products[] }) => {
+const TopCategories = ({ topCategories }: { topCategories: Categories[] }) => {
   return (
     <div className="max-w-7xl mx-auto flex flex-col md:items-start items-center gap-5 py-24">
+      {/* Heading */}
       <div className="flex items-center justify-center">
         <h2 className="font-semibold text-3xl">Top Categories</h2>
       </div>
+
+      {/* Categories Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-5 gap-5">
-        {products.map((item: Products) => (
-          <Card key={item._id} className="relative overflow-hidden">
+        {topCategories.map((category: Categories) => (
+          <Card key={category._id} className="relative overflow-hidden">
             <div className="aspect-square">
-              <Link href={`/${item._id}`}>
+              {/* Link to dynamic route */}
+              <Link href={`/productCategory/${category._id}`}>
                 <Image
-                  src={imageURL(item.image!).url()}
-                  alt={item.title || "sanity image"}
+                  src={imageURL(category.image!).url()}
+                  alt={category.title || "Category image"}
                   width={424}
                   height={424}
+                  className="cursor-pointer object-cover"
                 />
               </Link>
-              <div className="absolute bottom-0 w-full h-[80px] flex flex-col items-start justify-center bg-black/80 px-5">
-                <h4 className="text-white">{item.title}</h4>
-                <div>
-                  <span className="text-gray-400">{item.inventory}</span>
-                </div>
+
+              {/* {category.inventory === 0 && (
+                    <div className="absolute inset-0 bg-gray-900/40 flex items-center justify-center">
+                      <p className="text-white font-semibold text-lg">
+                        Out of Stock
+                      </p>
+                    </div>
+                  )} */}
+              {/* Title Overlay */}
+              <div className="absolute bottom-0 w-full h-[80px] flex items-center justify-center bg-black/80 px-5">
+                <h4 className="text-white font-semibold text-lg">
+                  {category.title}
+                </h4>
               </div>
             </div>
           </Card>
