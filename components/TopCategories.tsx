@@ -29,10 +29,13 @@ const TopCategories = ({ topCategories }: { topCategories: Categories[] }) => {
                 />
               </Link>
               {/* Title Overlay */}
-              <div className="absolute bottom-0 w-full h-[80px] flex items-center justify-center bg-black/80 px-5">
+              <div className="absolute bottom-0 flex-col w-full h-[80px] flex items-center justify-center gap-5 bg-black/80 px-5">
                 <h4 className="text-white font-semibold text-lg">
                   {category.title}
                 </h4>
+                <p className="text-white/80">
+                  {category.products ? category.products : 0}
+                </p>
               </div>
             </div>
           </Card>
