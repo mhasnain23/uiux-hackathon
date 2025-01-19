@@ -19,7 +19,7 @@ const TopCategories = ({ topCategories }: { topCategories: Categories[] }) => {
           <Card key={category._id} className="relative overflow-hidden">
             <div className="aspect-square">
               {/* Link to dynamic route */}
-              <Link href={`/productCategory/${category._id}`}>
+              <Link href={`/categories/${category.slug?.current}`}>
                 <Image
                   src={imageURL(category.image!).url()}
                   alt={category.title || "Category image"}
@@ -28,14 +28,6 @@ const TopCategories = ({ topCategories }: { topCategories: Categories[] }) => {
                   className="cursor-pointer object-cover"
                 />
               </Link>
-
-              {/* {category.inventory === 0 && (
-                    <div className="absolute inset-0 bg-gray-900/40 flex items-center justify-center">
-                      <p className="text-white font-semibold text-lg">
-                        Out of Stock
-                      </p>
-                    </div>
-                  )} */}
               {/* Title Overlay */}
               <div className="absolute bottom-0 w-full h-[80px] flex items-center justify-center bg-black/80 px-5">
                 <h4 className="text-white font-semibold text-lg">
