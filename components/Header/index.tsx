@@ -81,7 +81,10 @@ const Header = () => {
           </div>
           {/* for search bar */}
           <div className="flex items-center justify-center">
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={handleSubmit}
+              className="flex items-center justify-center gap-5"
+            >
               <input
                 type="text"
                 name="query"
