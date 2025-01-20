@@ -5,7 +5,7 @@ import { client } from "@/sanity/lib/client";
 export async function searchProductsByName(query: string): Promise<Products[]> {
   // Construct the query
   const PRODUCTS_BY_SEARCH = `
-    *[_type == "products" && (title match $name)]`;
+    *[_type == "products" && (title match $name || $tags in tags)]`;
 
   try {
     // Execute the query

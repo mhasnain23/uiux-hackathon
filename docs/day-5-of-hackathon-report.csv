@@ -1,0 +1,7 @@
+Test Case ID,Test Case Description,Test Steps,Expected Result,Actual Result,Status,Severity Level,Remark
+TC01,Validate product listing,Open product page > Verify products,Products displayed,Products displayed,Passed,low,No issues found
+TC02,Test API error handling,Disconnect API > Refresh page,Show fallback UI with error message,Error message shown,Passed,Medium,Handle gracefully
+TC03,Check cart functionality,Add product to cart > Verify cart contents,Cart updates with added product,Cart updates as expected,Passed,High,Work as expected
+TC04,Ensure responsiveness on mobile,Resize browser window > Check layout,Layout adjusts properly to screen size,Responsive layout working as intended,Passed,Medium,Test successful
+TC05,webhook & Origin testing on production,Go to sanity dashboard > APIs > webhook,Update the products data on production,poducts data updated as expected,Passed,High,Work as expected
+TC06,Implemented advanced search and filter,search by name and tags to show specific products,show the search results,Successfully showing search results expected,Passed,low,test successful
