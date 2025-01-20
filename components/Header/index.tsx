@@ -1,17 +1,34 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Language from "../Languages";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import Navigation from "../Navigation";
 import { useCartStore } from "@/store/cartStore";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { cart } = useCartStore();
+  const [value, setValue] = useState("");
+
+  const router = useRouter();
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      router.push(`/search?query=${value}`);
+    } catch (error) {
+      console.log(error);
+      setValue("");
+    } finally {
+      setValue("");
+    }
+  };
 
   return (
     <div className="w-full h-auto flex flex-col items-center">
@@ -61,6 +78,25 @@ const Header = () => {
               />
               <span>Comforty</span>
             </Link>
+          </div>
+          {/* for search bar */}
+          <div className="flex items-center justify-center">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="query"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder="Search by name or tags"
+                className="w-full bg-white border border-gray-300 px-4 py-2 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <Button
+                type="submit"
+                className="ml-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2"
+              >
+                Search
+              </Button>
+            </form>
           </div>
           <div>
             <Button className="bg-[#ffffff] hover:bg-[#dfdfdf] text-black rounded-lg">
