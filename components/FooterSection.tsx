@@ -219,13 +219,6 @@ function FooterSection() {
               quality={100}
               className="object-center object-cover invert"
             />
-            {/* <Image
-              src="/placeholder.svg"
-              alt="Visa"
-              width={40}
-              height={24}
-              className="h-6 w-auto"
-            /> */}
           </div>
         </div>
       </div>

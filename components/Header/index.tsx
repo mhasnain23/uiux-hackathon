@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import Navigation from "../Navigation";
 import { useCartStore } from "@/store/cartStore";
 import { useRouter } from "next/navigation";
+import { SearchIcon } from "lucide-react";
 
 const Header = () => {
   const { cart } = useCartStore();
@@ -83,7 +84,7 @@ const Header = () => {
           <div className="flex items-center justify-center">
             <form
               onSubmit={handleSubmit}
-              className="flex items-center justify-center gap-5"
+              className="flex items-center justify-center gap-2"
             >
               <input
                 type="text"
@@ -91,13 +92,14 @@ const Header = () => {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 placeholder="Search by name or tags"
-                className="w-full bg-white border border-gray-300 px-4 py-2 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <Button
                 type="submit"
-                className="ml-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2"
+                size={"icon"}
+                className="bg-blue-500 hover:bg-blue-600 text-white rounded-md"
               >
-                Search
+                <SearchIcon />
               </Button>
             </form>
           </div>

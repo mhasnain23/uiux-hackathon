@@ -20,7 +20,7 @@ const Hero = () => {
             href={"/products"}
             className="flex items-center justify-center gap-3"
           >
-            <Button className="bg-[#029FAE] hover:bg-[#029FAE]" size={"lg"}>
+            <Button className="bg-[#2563EB] hover:bg-[#1946a9]" size={"lg"}>
               Shop Now{" "}
               <Image
                 src={"/arrowright.png"}

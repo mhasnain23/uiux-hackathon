@@ -14,7 +14,7 @@ const ProductsGrid = ({ products }: { products: any }) => {
             <Link href={`/${product._id}`}>
               <Image
                 src={imageURL(product.image).url()}
-                alt={product.title!}
+                alt={product.title || "sanity image"}
                 width={675}
                 height={607}
                 priority
