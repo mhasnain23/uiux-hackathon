@@ -22,7 +22,7 @@
 
 Provide a high-level overview of the system's architecture. Include a diagram to visualize the interactions between components like the frontend, backend, database, and third-party services.
 
-![System Architecture](./images/system_structure.png)
+![System Architecture](./docs/images/system_structure.png)
 
 ---
 
@@ -121,7 +121,7 @@ Define the database schemas used in the Comforty marketplace. Below is an exampl
 
 ---
 
-![API Endpoints](./images/apiendpoints.png)
+![API Endpoints](./docs/images/apiendpoints.png)
 
 ## API Endpoints
 
