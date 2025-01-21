@@ -14,7 +14,7 @@
 
 **Comforty** is a fully functional e-commerce marketplace targeting the furniture market. This platform specializes in selling sofas, tables, beds, and other furniture-related items, offering a seamless shopping experience to users.
 
-![Technical Foundation](./images/technicalfoundation.png)
+![Technical Foundation](./docs/images/technicalfoundation.png)
 
 ---
 
