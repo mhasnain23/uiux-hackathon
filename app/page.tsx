@@ -1,6 +1,5 @@
 import AllProducts from "@/components/AllProducts";
 import Companies from "@/components/Companies";
-// import ExploreNewProduct from "@/components/ExploreNewProduct";
 import Hero from "@/components/Hero";
 import ProductsSection from "@/components/Products";
 import { Products } from "@/sanity.types";

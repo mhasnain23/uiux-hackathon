@@ -69,7 +69,7 @@ const Header = () => {
       {/* for the primary nav */}
       <div className="w-full bg-[#F0F2F3] md:px-5  md:py-0 py-5">
         <div className="max-w-7xl mx-auto h-[84px] flex md:flex-row flex-col items-center justify-between">
-          <div className=" font-semibold text-2xl">
+          <div className=" font-semibold text-2xl flex flex-wrap gap-10">
             <Link href={"/"} className="flex items-center justify-center gap-3">
               <Image
                 src={"/comfortylogo.svg"}
@@ -79,30 +79,30 @@ const Header = () => {
               />
               <span>Comforty</span>
             </Link>
+            <div className="flex items-center justify-center">
+              <form
+                onSubmit={handleSubmit}
+                className="flex items-center justify-center relative gap-2"
+              >
+                <input
+                  type="text"
+                  name="query"
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  placeholder="Search by name or tags"
+                  className="w-full bg-white border border-gray-300 px-10 py-3 text-base rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                  <SearchIcon className="absolute right-2 text-gray-400"/>
+                {/* <Button
+                  type="submit"
+                  size={"icon"}
+                  className="bg-blue-500 hover:bg-blue-600 text-white rounded-md"
+                >
+                </Button> */}
+              </form>
+            </div>
           </div>
           {/* for search bar */}
-          <div className="flex items-center justify-center">
-            <form
-              onSubmit={handleSubmit}
-              className="flex items-center justify-center gap-2"
-            >
-              <input
-                type="text"
-                name="query"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                placeholder="Search by name or tags"
-                className="w-full bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <Button
-                type="submit"
-                size={"icon"}
-                className="bg-blue-500 hover:bg-blue-600 text-white rounded-md"
-              >
-                <SearchIcon />
-              </Button>
-            </form>
-          </div>
           <div>
             <Button className="bg-[#ffffff] hover:bg-[#dfdfdf] text-black rounded-lg">
               <Link href={"/cart"} className="flex items-center gap-3">

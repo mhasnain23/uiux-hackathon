@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/FooterSection";
+import { ClerkProvider } from "@clerk/nextjs";
 import { ToastProvider } from "@radix-ui/react-toast";
 
 const geistSans = localFont({
@@ -27,14 +28,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />
-        <ToastProvider>{children}</ToastProvider>
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider dynamic>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Header />
+          <ToastProvider>{children}</ToastProvider>
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
