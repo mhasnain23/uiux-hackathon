@@ -1,12 +1,23 @@
-import React from "react";
+"use client";
+
+import { useUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 interface OrderSummaryProps {
   subtotal: number;
   shipping: string;
   total: number;
+  handleCheckout: () => void;
 }
 
-export function OrderSummary({ subtotal, shipping, total }: OrderSummaryProps) {
+export function OrderSummary({
+  subtotal,
+  shipping,
+  total,
+  handleCheckout,
+}: OrderSummaryProps) {
+  const { user } = useUser();
+
   return (
     <div className="rounded-lg md:p-2 p-6">
       <h2 className="text-lg font-medium text-gray-900 mb-4">Summary</h2>
@@ -27,8 +38,11 @@ export function OrderSummary({ subtotal, shipping, total }: OrderSummaryProps) {
             </span>
           </div>
         </div>
-        <button className="w-full bg-[#029fae] text-white py-3 rounded-full hover:bg-[#017e8b] transition-colors">
-          Member Checkout
+        <button
+          onClick={() => (user ? redirect("/checkout") : redirect("/sign-in"))}
+          className="w-full bg-[#029fae] text-white py-3 rounded-full hover:bg-[#017e8b] transition-colors"
+        >
+          {user ? "Checkout" : "Sign in to checkout"}
         </button>
       </div>
     </div>

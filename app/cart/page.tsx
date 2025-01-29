@@ -17,6 +17,8 @@ const CartPage = () => {
   const shipping = subtotal > 0 ? "Free" : "$0"; // Free shipping for any order with items
   const total = subtotal; // Assuming no taxes or additional fees for now
 
+  const handleCheckout = () => {};
+
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-8 sm:px-6 lg:px-0">
@@ -50,6 +52,7 @@ const CartPage = () => {
               subtotal={subtotal}
               shipping={shipping}
               total={total}
+              handleCheckout={handleCheckout}
             />
           </div>
         </div>
