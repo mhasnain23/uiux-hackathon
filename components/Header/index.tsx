@@ -9,6 +9,7 @@ import Navigation from "../Navigation";
 import { useCartStore } from "@/store/cartStore";
 import { useRouter } from "next/navigation";
 import { SearchIcon } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
 
 const Header = () => {
   const { cart } = useCartStore();
@@ -103,7 +104,7 @@ const Header = () => {
             </div>
           </div>
           {/* for search bar */}
-          <div>
+          <div className="flex items-center gap-5">
             <Button className="bg-[#ffffff] hover:bg-[#dfdfdf] text-black rounded-lg">
               <Link href={"/cart"} className="flex items-center gap-3">
                 <Image
@@ -118,6 +119,7 @@ const Header = () => {
                 </span>
               </Link>
             </Button>
+            <UserButton/>
           </div>
         </div>
       </div>

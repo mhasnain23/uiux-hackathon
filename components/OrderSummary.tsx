@@ -39,7 +39,7 @@ export function OrderSummary({
           </div>
         </div>
         <button
-          onClick={() => (user ? redirect("/checkout") : redirect("/sign-in"))}
+          onClick={() => (user ? handleCheckout : redirect("/sign-in"))}
           className="w-full bg-[#029fae] text-white py-3 rounded-full hover:bg-[#017e8b] transition-colors"
         >
           {user ? "Checkout" : "Sign in to checkout"}
