@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const SuccessPage = () => {
   const searchParams = useSearchParams();
@@ -39,12 +40,12 @@ const SuccessPage = () => {
           )}
         </div>
 
-        <a
+        <Link
           href="/"
           className="mt-6 inline-block bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300"
         >
           Continue Shopping
-        </a>
+        </Link>
       </div>
     </div>
   );
