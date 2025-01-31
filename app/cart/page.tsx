@@ -17,40 +17,6 @@ const CartPage = () => {
   const shipping = subtotal > 0 ? "Free" : "$0"; // Free shipping for any order with items
   const total = subtotal; // Assuming no taxes or additional fees for now
 
-  const handleCheckout = async () => {
-    if (cartItems.length === 0) {
-      alert("Your cart is empty!");
-      return;
-    }
-  
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: cartItems.map((item) => ({
-            name: item.title,
-            image: imageURL(item.image!).url(),
-            price: item.price,
-            quantity: item.quantity,
-          })),
-          userEmail: "jhon@gmail.com", // Replace with actual user email from auth
-        }),
-      });
-  
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url; // Redirect to Stripe Checkout
-      } else {
-        alert("Something went wrong with checkout!");
-      }
-    } catch (error) {
-      console.error("Checkout error:", error);
-      alert("Failed to process checkout. Please try again.");
-    }
-  };
-  
-
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-8 sm:px-6 lg:px-0">
@@ -84,7 +50,7 @@ const CartPage = () => {
               subtotal={subtotal}
               shipping={shipping}
               total={total}
-              handleCheckout={handleCheckout}
+              // handleCheckout={handleCheckout}
             />
           </div>
         </div>
