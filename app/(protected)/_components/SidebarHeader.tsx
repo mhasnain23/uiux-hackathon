@@ -10,7 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Bell, User } from "lucide-react";
-import { ModeToggle } from "@/components/mode-toggle";
 
 export default function SidebarHeader() {
   return (
@@ -20,9 +19,6 @@ export default function SidebarHeader() {
           <Button variant="ghost" size="icon">
             <Bell className="h-5 w-5" />
           </Button>
-
-          <ModeToggle />
-
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
