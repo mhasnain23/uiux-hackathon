@@ -4,7 +4,7 @@ import React from "react";
 import { useCartStore } from "@/store/cartStore";
 import { Products } from "@/sanity.types";
 import { ShoppingCart, Trash2 } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast"; // shadcn's toast hook
+// import { useToast } from "@/components/ui/use-toast"; // shadcn's toast hook
 
 interface AddToCartButtonProps {
   product: Products; // Product type based on your Sanity schema
@@ -18,18 +18,18 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   const addItem = useCartStore((state) => state.addItem);
   const removeItem = useCartStore((state) => state.removeItem);
   const cartItems = useCartStore((state) => state.cart);
-  const { toast } = useToast();
+  // const { toast } = useToast();
 
   // Check if the product is already in the cart
   const isInCart = cartItems.some((item) => item._id === product._id);
 
   const handleAddToCart = () => {
     addItem(product);
-    toast({
-      title: "Added to Cart",
-      description: `${product.title} has been added to your cart.`,
-      variant: "success",
-    });
+    // toast({
+    //   title: "Added to Cart",
+    //   description: `${product.title} has been added to your cart.`,
+    //   variant: "success",
+    // });
   };
 
   const handleRemoveFromCart = () => {
